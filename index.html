@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سِيمَاهُمْ — الكلمة الواحدة بين الرفعة والضعة</title>
+<meta name="description" content="دراسة تطبيقية في التعدد الرسمي لكلمة (سيماهم) في المصحف العثماني، وتطابقه مع البنية الثلاثية لأهل القيامة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --green-deep: #0d3d2d;
+    --green-mid: #1a5c45;
+    --gold: #c9a961;
+    --gold-soft: #e6d4a0;
+    --cream: #faf6ef;
+    --ink: #1c1c1c;
+    --ink-soft: #3a3a3a;
+    --rule: #e0d5b8;
+    --accent-red: #a83232;
+    --accent-orange: #c47b1e;
+    --shadow: 0 4px 16px rgba(13, 61, 45, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+    background: var(--cream); color: var(--ink);
+    line-height: 1.9; font-size: 17px;
+    background-image:
+      radial-gradient(circle at 10% 5%, rgba(201, 169, 97, 0.06) 0, transparent 40%),
+      radial-gradient(circle at 90% 95%, rgba(13, 61, 45, 0.05) 0, transparent 40%);
+    background-attachment: fixed;
+  }
+  body.lang-en { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.75; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250, 246, 239, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .topbar-title { color: var(--green-deep); font-weight: 700; font-size: 15px; }
+  .lang-toggle {
+    background: var(--green-deep); color: var(--cream);
+    border: 1px solid var(--gold); padding: 8px 20px;
+    border-radius: 30px; font-family: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s ease;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .lang-toggle:hover { background: var(--gold); color: var(--green-deep); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(201,169,97,0.3); }
+  .lang-toggle svg { width: 16px; height: 16px; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { text-align: center; padding: 80px 0 60px; border-bottom: 1px solid var(--rule); position: relative; }
+  .hero::after { content: ""; display: block; width: 80px; height: 2px; background: var(--gold); margin: 32px auto 0; }
+  .hero-ornament { color: var(--gold); font-size: 28px; letter-spacing: 12px; margin-bottom: 20px; opacity: 0.6; }
+  .hero h1 {
+    font-family: 'Amiri', serif; color: var(--green-deep);
+    font-size: clamp(40px, 7vw, 72px); font-weight: 700; line-height: 1.3;
+    margin-bottom: 16px; letter-spacing: 1px;
+  }
+  body.lang-en .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 5.5vw, 56px); }
+  .hero-subtitle { color: var(--ink-soft); font-size: 20px; margin-bottom: 24px; font-weight: 500; }
+  .hero-svg-wrap {
+    display: flex; justify-content: center; align-items: center;
+    margin: 24px auto; padding: 24px;
+    background: linear-gradient(135deg, rgba(250,246,239,0.5), rgba(244,236,220,0.8));
+    border-radius: 12px; border: 1px solid var(--rule);
+    max-width: 420px; box-shadow: var(--shadow);
+  }
+  .hero-svg-wrap img { width: 100%; max-width: 360px; height: auto; filter: drop-shadow(0 3px 8px rgba(13,61,45,0.15)); }
+  .hero-core {
+    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+    color: var(--cream); padding: 24px 32px; border-radius: 8px;
+    margin: 32px auto 0; max-width: 720px;
+    font-size: 16.5px; line-height: 1.85;
+    box-shadow: var(--shadow); border: 1px solid var(--gold-soft);
+  }
+  .hero-ayah { font-family: 'Amiri', serif; font-size: 22px; color: var(--gold-soft); display: block; margin: 16px 0; font-weight: 700; }
+  .hero-ayah-ref { font-size: 13px; color: var(--gold); opacity: 0.85; display: block; font-style: italic; }
+
+  .lang-ar, .lang-en-content { display: none; }
+  .lang-ar.active, .lang-en-content.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  section { padding: 60px 0; border-bottom: 1px solid var(--rule); }
+  h2 {
+    font-family: 'Amiri', serif; color: var(--green-deep);
+    font-size: clamp(26px, 3.5vw, 34px); font-weight: 700;
+    margin-bottom: 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  body.lang-en h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3.2vw, 30px); }
+  h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px;
+    background: var(--green-deep); color: var(--gold);
+    border-radius: 50%; font-size: 18px; font-weight: 700;
+    flex-shrink: 0; font-family: 'Inter', sans-serif;
+  }
+  h2 .h2-sub {
+    color: var(--gold); font-size: 13px; font-weight: 500;
+    font-family: 'Inter', sans-serif; letter-spacing: 3px;
+    display: block; width: 100%; margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: 'Amiri', serif; color: var(--green-mid);
+    font-size: 22px; font-weight: 700; margin: 32px 0 12px;
+    padding-right: 12px; border-right: 3px solid var(--gold);
+  }
+  [dir="ltr"] h3 { border-right: none; padding-right: 0; border-left: 3px solid var(--gold); padding-left: 12px; }
+  body.lang-en h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; }
+  p { margin-bottom: 16px; }
+  .lead { font-size: 19px; color: var(--ink-soft); line-height: 1.9; }
+
+  .ayah {
+    display: block;
+    background: linear-gradient(to left, transparent, rgba(201,169,97,0.08), transparent);
+    padding: 18px 24px; margin: 24px 0;
+    border-right: 4px solid var(--gold);
+    font-family: 'Amiri', serif; font-size: 22px; line-height: 2.2;
+    color: var(--green-deep); font-weight: 700; text-align: center;
+  }
+  [dir="ltr"] .ayah { border-right: none; border-left: 4px solid var(--gold); }
+  .ayah-ref { display: block; font-size: 13px; color: var(--gold); margin-top: 6px; font-weight: 500; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
+
+  /* Correction box */
+  .correction {
+    background: linear-gradient(135deg, rgba(196,123,30,0.06), rgba(201,169,97,0.12));
+    border: 1px solid var(--accent-orange);
+    border-radius: 10px;
+    padding: 32px 32px 28px;
+    margin: 32px 0;
+    position: relative;
+  }
+  .correction::before {
+    content: "تصويب وتعميق";
+    position: absolute;
+    top: -14px; right: 24px;
+    background: var(--accent-orange); color: white;
+    padding: 4px 18px; border-radius: 20px;
+    font-size: 13px; font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+  }
+  body.lang-en .correction::before { content: "Correction & Deepening"; }
+  [dir="ltr"] .correction::before { right: auto; left: 24px; }
+  .correction h3 {
+    color: var(--accent-orange); border-right-color: var(--accent-orange);
+    margin-top: 8px; font-size: 20px;
+  }
+  [dir="ltr"] .correction h3 { border-right: none; border-left-color: var(--accent-orange); }
+  .correction h3:first-of-type { margin-top: 8px; }
+  .correction h3:not(:first-of-type) { margin-top: 36px; }
+  .correction p { font-size: 15.5px; line-height: 1.85; }
+  .correction .correction-ayah {
+    display: block; font-family: 'Amiri', serif;
+    font-size: 19px; line-height: 2;
+    color: var(--green-deep); font-weight: 700;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 6px;
+    margin: 12px 0;
+    border-right: 3px solid var(--gold);
+  }
+  [dir="ltr"] .correction .correction-ayah { border-right: none; border-left: 3px solid var(--gold); }
+
+  /* Threefold table (special) */
+  .threefold-wrap {
+    margin: 32px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--rule);
+    background: white;
+  }
+  .threefold-table {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15.5px;
+  }
+  .threefold-table th {
+    background: var(--green-deep); color: var(--gold-soft);
+    padding: 16px 12px; text-align: right;
+    font-weight: 700; font-size: 14.5px;
+    border-bottom: 2px solid var(--gold);
+  }
+  [dir="ltr"] .threefold-table th { text-align: left; }
+  .threefold-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+  }
+  .threefold-table tr:last-child td { border-bottom: none; }
+  .group-cell {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700;
+  }
+  .group-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    font-family: 'Amiri', serif;
+  }
+  .group-heaven .group-icon { background: var(--green-deep); color: var(--gold-soft); }
+  .group-araf .group-icon { background: var(--gold); color: var(--green-deep); }
+  .group-fire .group-icon { background: var(--ink-soft); color: white; }
+  .group-heaven .group-name { color: var(--green-deep); }
+  .group-araf .group-name { color: var(--accent-orange); }
+  .group-fire .group-name { color: var(--ink-soft); }
+
+  .table-wrap {
+    overflow-x: auto; margin: 28px 0;
+    border-radius: 8px; box-shadow: var(--shadow);
+    background: white; border: 1px solid var(--rule);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 15.5px; font-family: 'Noto Naskh Arabic', serif; }
+  body.lang-en table { font-family: 'Inter', sans-serif; font-size: 14.5px; }
+  th {
+    background: var(--green-deep); color: var(--gold-soft);
+    padding: 14px 16px; text-align: right; font-weight: 700; font-size: 14.5px;
+    border-bottom: 2px solid var(--gold); letter-spacing: 0.3px;
+  }
+  [dir="ltr"] th { text-align: left; }
+  td { padding: 13px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(244, 236, 220, 0.4); }
+  tr.highlight td { background: rgba(201, 169, 97, 0.15); font-weight: 600; }
+  tr.highlight td:first-child { border-right: 4px solid var(--gold); padding-right: 12px; }
+  [dir="ltr"] tr.highlight td:first-child { border-right: none; border-left: 4px solid var(--gold); padding-right: 16px; padding-left: 12px; }
+
+  .states-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 36px 0; }
+  @media (max-width: 720px) { .states-grid { grid-template-columns: 1fr; } }
+  .state-card {
+    background: white; border-radius: 10px; padding: 28px 20px; text-align: center;
+    box-shadow: var(--shadow); border-top: 4px solid var(--gold);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .state-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(13,61,45,0.15); }
+  .state-card.heaven { border-top-color: var(--green-deep); }
+  .state-card.araf   { border-top-color: var(--gold); }
+  .state-card.fire   { border-top-color: var(--ink-soft); }
+  .state-card .state-label {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    font-family: 'Inter', sans-serif; margin-bottom: 12px;
+  }
+  .state-card.heaven .state-label { color: var(--green-deep); }
+  .state-card.araf .state-label { color: var(--accent-orange); }
+  .state-card.fire .state-label { color: var(--ink-soft); }
+  .rasm-img { width: 100%; max-width: 220px; height: auto; display: block; margin: 16px auto; transition: transform 0.3s ease; }
+  .state-card:hover .rasm-img { transform: scale(1.05); }
+  .state-card .state-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; margin-top: 8px; }
+  .state-card .state-refs { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--rule); font-size: 13px; color: var(--gold); font-weight: 600; font-family: 'Inter', sans-serif; }
+  .state-card.heaven .state-refs { color: var(--green-deep); }
+  .state-card.araf .state-refs { color: var(--accent-orange); }
+  .state-card.fire .state-refs { color: var(--ink-soft); }
+
+  .callout {
+    background: linear-gradient(135deg, rgba(201,169,97,0.12), rgba(13,61,45,0.06));
+    border: 1px solid var(--gold); border-radius: 8px;
+    padding: 24px 28px; margin: 24px 0; position: relative;
+  }
+  .callout::before {
+    content: "◆"; position: absolute; top: -10px; right: 24px;
+    background: var(--gold); color: white;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; line-height: 1;
+  }
+  [dir="ltr"] .callout::before { right: auto; left: 24px; }
+  .callout-title { font-weight: 700; color: var(--green-deep); display: block; margin-bottom: 8px; font-size: 17px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .duo {
+    background: white; border-radius: 8px;
+    border: 1px solid var(--rule); border-right: 4px solid var(--green-deep);
+    padding: 20px 24px; margin: 20px 0;
+  }
+  [dir="ltr"] .duo { border-right: 1px solid var(--rule); border-left: 4px solid var(--green-deep); }
+  .duo-title {
+    font-weight: 700; color: var(--green-deep);
+    display: block; margin-bottom: 8px; font-size: 16.5px;
+  }
+
+  footer { background: var(--green-deep); color: var(--cream); padding: 48px 28px 32px; text-align: center; }
+  footer p { color: rgba(250,246,239,0.85); font-size: 14.5px; margin-bottom: 10px; }
+  footer .footer-ayah { font-family: 'Amiri', serif; font-size: 22px; color: var(--gold-soft); margin: 20px 0; display: block; }
+  footer .footer-ref { color: var(--gold); font-size: 13px; font-style: italic; }
+  footer .divider-orn { color: var(--gold); letter-spacing: 8px; opacity: 0.6; margin: 16px 0; font-size: 14px; }
+  .credit { font-size: 12px; color: rgba(250,246,239,0.6); margin-top: 20px; line-height: 1.6; }
+
+  @media print {
+    .topbar { position: static; }
+    .lang-toggle { display: none; }
+    body { background: white; font-size: 12pt; }
+    section { page-break-inside: avoid; }
+  }
+  @media (max-width: 620px) {
+    .threefold-table td, .threefold-table th { padding: 10px 8px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">
+    <span class="lang-ar active">درةُ التاج — فصل «سِيمَاهُمْ»</span>
+    <span class="lang-en-content active">The Crown Jewel — «Sīmāhum»</span>
+  </div>
+  <button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </svg>
+    <span id="langLabel">English</span>
+  </button>
+</div>
+
+<!-- ============ ARABIC ============ -->
+<div class="lang-ar active">
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-ornament">✦ ✦ ✦</div>
+    <h1>سِيمَاهُمْ</h1>
+    <p class="hero-subtitle">الكلمة الواحدة بين الرفعة والضعة</p>
+    <div class="hero-svg-wrap">
+      <img src="assets/simahum-elev.svg" alt="سِيمَاهُمْ بالرسم العثماني — الفتح ٤٨:٢٩">
+    </div>
+    <div class="hero-core">
+      <p>لم يختلف جذرها، ولا صرفها، ولا وزنها. لكن الرسم العثماني رسمها في مواضعها الستة بثلاث حالات متمايزة، فصارت الكلمة الواحدة مصوِّرةً لأحوال أصحابها.</p>
+      <span class="hero-ayah">﴿سِيمَاهُمْ فِي وُجُوهِهِم مِّنْ أَثَرِ السُّجُودِ﴾</span>
+      <span class="hero-ayah-ref">الفتح: ٢٩</span>
+    </div>
+  </div>
+
+  <!-- ============ Correction & Deepening ============ -->
+  <section>
+    <div class="correction">
+      <h3>أولًا — تصويب مرجع الضمير</h3>
+      <p>وقفنا بعد نشر هذه الدراسة على تنبيهٍ دقيق من أحد القرّاء الأفاضل، يُصوّب مرجعَ الضمير في «سِيمَاهُمْ» في موضعَي سورة الأعراف؛ فليس الضمير عائدًا على أهل الأعراف أنفسهم، وإنما يعود على المُعرَّفين:</p>
+
+      <span class="correction-ayah">﴿وَعَلَى الْأَعْرَافِ رِجَالٌ يَعْرِفُونَ كُلًّا بِسِيمَاهُمْ﴾<span class="ayah-ref">الأعراف: ٤٦</span></span>
+      <p>فـ«كُلًّا» مفعول به، والضمير في «سيماهم» عائد على <strong>أصحاب الجنة وأصحاب النار معًا</strong>.</p>
+
+      <span class="correction-ayah">﴿وَنَادَىٰ أَصْحَابُ الْأَعْرَافِ رِجَالًا يَعْرِفُونَهُم بِسِيمَاهُمْ﴾<span class="ayah-ref">الأعراف: ٤٨</span></span>
+      <p>والضمير يعود على الرجال المُنادَين، وهم <strong>من أهل النار</strong>.</p>
+
+      <p><strong>فأهل الأعراف عارفون لا معروفون.</strong> والشكر لهذا التنبيه الذي نُصحّح به، ونُعمّق به الفهم في الوقت نفسه.</p>
+
+      <h3>ثانيًا — تعميق التوجيه: البنية الثلاثية للسورة</h3>
+      <p>مع هذا التصويب، لا تبقى الحاجة إلى توجيه النبرة بحال أهل الأعراف، ولا إلى القول بأنها تشير إلى حالتهم الوسطى بحسب الضمير. <strong>فالبناء أظهر وأوضح إذا نُظر إلى بنية السورة الكاملة</strong>:</p>
+
+      <p>جاءت سورة الأعراف بمشهد القيامة على <strong>ثلاث مجاميع</strong>:</p>
+      <ul style="list-style: none; padding: 12px 0 12px 24px; margin: 16px 0;">
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--green-deep); font-weight: 700;">◈</span>
+          <strong>أصحاب الجنة</strong> — في أعلى الرفعة.
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--ink-soft); font-weight: 700;">◈</span>
+          <strong>أصحاب النار</strong> — في أسفل الضعة.
+        </li>
+        <li style="padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--accent-orange); font-weight: 700;">◈</span>
+          <strong>أهل الأعراف</strong> — في برزخٍ بينهما، وُقفوا على <strong>المرتفع الجغرافي</strong> الذي سمّيت به السورة.
+        </li>
+      </ul>
+
+      <p>ثم انظر كيف <strong>يستجيب رسم الكلمة الواحدة</strong> لهذا البناء الثلاثي:</p>
+
+      <ul style="list-style: none; padding: 12px 0 12px 24px; margin: 16px 0;">
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--green-deep); font-weight: 700;">◇</span>
+          <strong>حيث يكون السياق في الذروة</strong> (الفتح ٤٨:٢٩): جاء الحرف <strong>بالألف الكاملة السامقة</strong>.
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--ink-soft); font-weight: 700;">◇</span>
+          <strong>وحيث يكون السياق في الضعة</strong> (البقرة، محمد، الرحمن): <strong>غاب الحرف</strong>.
+        </li>
+        <li style="padding-right: 20px; position: relative;">
+          <span style="position: absolute; right: 0; color: var(--accent-orange); font-weight: 700;">◇</span>
+          <strong>وحيث يكون السياق في البرزخ</strong> (الأعراف ٧:٤٦، ٤٨): جاء الحرف في <strong>مرتبة وسطى</strong> — نبرةً لا حرفًا كاملًا ولا غائبًا.
+        </li>
+      </ul>
+
+      <p>و<strong>النبرة هنا تُؤدّي وظيفتين متكاملتين</strong>:</p>
+
+      <div class="duo">
+        <span class="duo-title">الوظيفة الأولى — إشارة إلى الموضع المكاني</span>
+        <p style="margin: 0;">أن «الأعراف» في أعلى المرتفعات، والنبرة <strong>في أعلى هيئة الحرف</strong>، فوق الخط، لا كاملة ولا غائبة.</p>
+      </div>
+
+      <div class="duo">
+        <span class="duo-title">الوظيفة الثانية — إشارة إلى الحال البرزخية</span>
+        <p style="margin: 0;">أن أهلها وُقفوا لا دخلوا، بين بين، والنبرة <strong>في مرتبة وسطى</strong>، لا إثباتٌ كاملٌ ولا حذفٌ تامّ.</p>
+      </div>
+
+      <p><strong>والأعجب من ذلك:</strong> أن هذه النبرة <strong>لم تتكرر في أيّ موضعٍ آخر في المصحف</strong>، لا في «سِيمَاهُمْ» في غير الأعراف، ولا في كلمةٍ أخرى على وزنها. وهذا التفرّد <strong>دليل قاطع على أن الاختيار كان مقصودًا</strong>: فما لم يكن له نظير دلّ على أنه اختيارٌ مقصود بذاته.</p>
+
+      <p>فالرسم — بلطفه — <strong>يُعيد إنتاج البنية الثلاثية للسورة في هيئة حرفٍ واحد</strong>. وفي هذا ما يزيد البحث يقينًا: أن الكلمة الجامدة تصبح في المصحف ناطقًا بموقف صاحبها.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">أولًا</span>
+      <span class="num">١</span>
+      لماذا هي درة التاج؟
+    </h2>
+    <p class="lead">وقفنا في هذا البحث على أحد عشر شاهدًا من شواهد رسم الألف. لكنّ «سِيمَاهُمْ» تفرّدت بخصال لا تجتمع في غيرها:</p>
+
+    <div class="callout">
+      <span class="callout-title">الكلمة واحدة بتمام حروفها</span>
+      <p>لا يمكن أن يُقال إن اختلاف الرسم عائدٌ إلى اختلاف اللفظ، أو الجذر، أو الصرف. فالكلمة هي هي في مواضعها الستة كلها.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-title">التعدد الرسمي الثلاثي</span>
+      <p>لم تُرسم على حالين فقط — كما هو الشأن في سائر شواهد البحث — بل على ثلاث حالات متمايزة: ألف كاملة، ونبرة صغيرة، وخلوٌّ تامّ.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-title">المطابقة التامة بين الرسم والبنية الثلاثية</span>
+      <p>جرت الحالات الثلاث على وفاق بنية السورة: رفعةً في أعلى الدرجات، وضعةً في أسفلها، وبرزخًا بينهما. فالرسم يُعيد إنتاج البنية الثلاثية في هيئة الحرف.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">ثانيًا</span>
+      <span class="num">٢</span>
+      المواضع الستة وبصمتها الرسمية
+    </h2>
+    <p>وردت كلمة «سِيمَاهُمْ» في المصحف ستة مواضع، وقد جاءت في المواضع الخمسة الأولى مقترنةً بالباء، وأما الموضع السادس — الفتح ٤٨:٢٩ — فجاء <strong>مجرَّدًا من الباء</strong>، فكان مقدَّمًا للثبوت لا للاستدلال.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>الموضع</th>
+            <th>الرسم</th>
+            <th>مرجع الضمير</th>
+            <th>الوظيفة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>١</td>
+            <td>البقرة ٢:٢٧٣</td>
+            <td>بغير ألف</td>
+            <td>الفقراء المتعففون</td>
+            <td>وسيلة تعرُّفٍ</td>
+          </tr>
+          <tr class="highlight">
+            <td>٢</td>
+            <td>الأعراف ٧:٤٦</td>
+            <td>نبرة صغيرة</td>
+            <td>أصحاب الجنة وأصحاب النار</td>
+            <td>أداةُ فَرزٍ من موقع برزخ</td>
+          </tr>
+          <tr class="highlight">
+            <td>٣</td>
+            <td>الأعراف ٧:٤٨</td>
+            <td>نبرة صغيرة</td>
+            <td>رجالٌ من أهل النار</td>
+            <td>أداةُ فَرزٍ من موقع برزخ</td>
+          </tr>
+          <tr>
+            <td>٤</td>
+            <td>محمد ٤٧:٣٠</td>
+            <td>بغير ألف</td>
+            <td>المنافقون</td>
+            <td>وسيلة تعرُّفٍ</td>
+          </tr>
+          <tr>
+            <td>٥</td>
+            <td>الرحمن ٥٥:٤١</td>
+            <td>بغير ألف</td>
+            <td>المجرمون</td>
+            <td>وسيلة تعرُّفٍ</td>
+          </tr>
+          <tr class="highlight">
+            <td>٦</td>
+            <td>الفتح ٤٨:٢٩</td>
+            <td>بالألف الكاملة</td>
+            <td>أصحاب النبي ﷺ</td>
+            <td>وصفٌ ثابت في الوجوه</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Threefold structure section ============ -->
+  <section>
+    <h2>
+      <span class="h2-sub">ثالثًا</span>
+      <span class="num">٣</span>
+      البنية الثلاثية في سورة الأعراف
+    </h2>
+    <p>لم تكتفِ سورة الأعراف بعرض المشهد الأخروي، بل <strong>قسّمت أهل القيامة ثلاث مجاميع</strong>، لكلٍّ موقعُه وحالُه:</p>
+
+    <div class="threefold-wrap">
+      <table class="threefold-table">
+        <thead>
+          <tr>
+            <th>المجموعة</th>
+            <th>الموقع في الآية</th>
+            <th>الحالة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="group-cell group-heaven">
+                <span class="group-icon">◉</span>
+                <span class="group-name">أصحاب الجنة</span>
+              </div>
+            </td>
+            <td>﴿وَنَادَىٰ أَصْحَابُ الْجَنَّةِ﴾ [٧:٤٤]</td>
+            <td>أعلى الرفعة</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="group-cell group-fire">
+                <span class="group-icon">◉</span>
+                <span class="group-name">أصحاب النار</span>
+              </div>
+            </td>
+            <td>﴿وَنَادَىٰ أَصْحَابُ النَّارِ﴾ [٧:٥٠]</td>
+            <td>أسفل الضعة</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="group-cell group-araf">
+                <span class="group-icon">◉</span>
+                <span class="group-name">أهل الأعراف</span>
+              </div>
+            </td>
+            <td>﴿وَعَلَى الْأَعْرَافِ رِجَالٌ﴾ [٧:٤٦]</td>
+            <td>موقف برزخ بين بين</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>هذا التقسيم <strong>ليس استنباطًا منّا</strong>، وإنما هو <strong>بنية السورة نفسها</strong>: صنفان في الغاية، وصنفٌ ثالث في البرزخ.</p>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">رابعًا</span>
+      <span class="num">٤</span>
+      الحالات الرسمية الثلاث
+    </h2>
+    <p>رسم المصحف الكلمة نفسها على ثلاث حالات، تكوّن نسقًا متناسقًا مع البنية الثلاثية للسورة.</p>
+
+    <div class="states-grid">
+      <div class="state-card heaven">
+        <div class="state-label">ذروة</div>
+        <img src="assets/simahum-elev.svg" alt="سِيمَاهُمْ بالألف الكاملة" class="rasm-img">
+        <div class="state-desc">ألفٌ كاملة سامقة فوق الخط، تناسب ذروة المقام.</div>
+        <div class="state-refs">الفتح ٤٨:٢٩</div>
+      </div>
+      <div class="state-card araf">
+        <div class="state-label">برزخ</div>
+        <img src="assets/simahum-mid.svg" alt="سِيمَٰهُمْ بالنبرة الصغيرة" class="rasm-img">
+        <div class="state-desc">نبرةٌ صغيرة بارزة في شأن أعلى الخط، لا كاملة ولا غائبة.</div>
+        <div class="state-refs">الأعراف ٧:٤٦، ٤٨</div>
+      </div>
+      <div class="state-card fire">
+        <div class="state-label">ضعة</div>
+        <img src="assets/simahum-low.svg" alt="سِيمْهُمْ بغير ألف" class="rasm-img">
+        <div class="state-desc">حرفٌ غائبٌ من الرسم، كما غاب أصحابه في الخفاء أو انحطّوا.</div>
+        <div class="state-refs">البقرة · محمد · الرحمن</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">خامسًا</span>
+      <span class="num">٥</span>
+      موقع الشاهد من حفظ النص
+    </h2>
+    <p>بقيت هذه الحالات الثلاث ثابتةً في الرسم الأول مدةَ أربعة عشر قرنًا، ونُسخ المصحف مراتٍ لا تُحصى في المشرق والمغرب، ومع ذلك لم تُبدَّل الألف في كلمة «سِيمَاهُمْ» ولا في موضعٍ واحدٍ منها.</p>
+
+    <div class="callout">
+      <span class="callout-title">شهادة الرسم التكميلية</span>
+      <p>هذا شاهدٌ معاضدٌ لما ثبت من حفظ النصّ بالآيات، وبالتواتر الصوتي، وبإجماع الأمة. فإن الحفظ الإلهي ثابتٌ بذاته، وهذه الأنماط الرسمية تتكامل معه ولا تُنشئه.</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ============ ENGLISH ============ -->
+<div class="lang-en-content">
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-ornament">✦ ✦ ✦</div>
+    <h1>Sīmāhum</h1>
+    <p class="hero-subtitle">A Single Word Between Elevation and Abasement</p>
+    <div class="hero-svg-wrap">
+      <img src="assets/simahum-elev.svg" alt="Sīmāhum in the ʿUthmānic rasm — al-Fatḥ 48:29">
+    </div>
+    <div class="hero-core">
+      <p>Its root is unchanged, its morphology unchanged, its weight unchanged. Yet the ʿUthmānic orthography rendered it, across its six occurrences, in three distinct forms.</p>
+      <span class="hero-ayah">﴿سِيمَاهُمْ فِي وُجُوهِهِم مِّنْ أَثَرِ السُّجُودِ﴾</span>
+      <span class="hero-ayah-ref">Sūrat al-Fatḥ: 29</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="correction">
+      <h3>First — Correction of the Pronoun Reference</h3>
+      <p>After publishing this study, a careful reader offered a precise correction regarding the pronoun reference of <em>sīmāhum</em> in the two occurrences of Sūrat al-Aʿrāf: the pronoun does not refer to the Companions of the Heights themselves, but to those designated.</p>
+
+      <span class="correction-ayah">﴿وَعَلَى الْأَعْرَافِ رِجَالٌ يَعْرِفُونَ كُلًّا بِسِيمَاهُمْ﴾<span class="ayah-ref">al-Aʿrāf: 46</span></span>
+      <p>Here <em>kullan</em> is an object, and the pronoun in <em>sīmāhum</em> refers to <strong>the people of Paradise and the people of the Fire together</strong>.</p>
+
+      <span class="correction-ayah">﴿وَنَادَىٰ أَصْحَابُ الْأَعْرَافِ رِجَالًا يَعْرِفُونَهُم بِسِيمَاهُمْ﴾<span class="ayah-ref">al-Aʿrāf: 48</span></span>
+      <p>And the pronoun refers to the men being called to — <strong>the people of the Fire</strong>.</p>
+
+      <p><strong>So the Companions of the Heights are the knowers, not the known.</strong></p>
+
+      <h3>Second — Deepening the Orientation: the Threefold Structure</h3>
+      <p>With this correction, there is no need to ground the notch in the state of the Companions of the Heights, nor to claim it refers to their intermediate condition via the pronoun. <strong>The structure is clearer when the entire sūrah is considered</strong>.</p>
+
+      <p>Sūrat al-Aʿrāf presents the Day of Judgment in <strong>three groups</strong>:</p>
+      <ul style="list-style: none; padding: 12px 0 12px 24px; margin: 16px 0;">
+        <li style="margin-bottom: 10px;"><strong>The People of Paradise</strong> — at the height of elevation.</li>
+        <li style="margin-bottom: 10px;"><strong>The People of the Fire</strong> — at the depth of abasement.</li>
+        <li><strong>The Companions of the Heights</strong> — in an isthmus, standing on the elevated place from which the sūrah takes its name.</li>
+      </ul>
+
+      <p>Now observe how the inscription of the single word responds to this threefold structure:</p>
+
+      <ul style="list-style: none; padding: 12px 0 12px 24px; margin: 16px 0;">
+        <li style="margin-bottom: 10px;">Where the context is at the <strong>peak</strong> (al-Fatḥ 48:29): the letter is <strong>a full ascending alif</strong>.</li>
+        <li style="margin-bottom: 10px;">Where the context is at the <strong>depth</strong> (al-Baqarah, Muḥammad, al-Raḥmān): the letter is <strong>absent</strong>.</li>
+        <li>Where the context is at the <strong>isthmus</strong> (al-Aʿrāf 7:46, 48): the letter takes an <strong>intermediate rank</strong> — a notch, neither full nor absent.</li>
+      </ul>
+
+      <p><strong>The notch performs two functions at once</strong>:</p>
+
+      <div class="duo">
+        <span class="duo-title">First Function — Spatial Reference</span>
+        <p style="margin: 0;">The Heights are at the top of elevations; the notch is <strong>at the top of the letter's form</strong>, above the line.</p>
+      </div>
+
+      <div class="duo">
+        <span class="duo-title">Second Function — Isthmus State</span>
+        <p style="margin: 0;">Its people are halted, not entered; the notch is <strong>at an intermediate rank</strong>, neither full inscription nor total omission.</p>
+      </div>
+
+      <p><strong>And most remarkably</strong>, this notch <strong>appears nowhere else in the entire muṣḥaf</strong> — not in other occurrences of <em>sīmāhum</em>, nor in any other word of the same form. This uniqueness is <strong>decisive evidence of intentional choice</strong>: what has no parallel must be deliberate.</p>
+
+      <p>The script, in its subtlety, <strong>reproduces the sūrah's threefold structure in the form of a single letter</strong>.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">First</span>
+      <span class="num">1</span>
+      Why This Is the Crown Jewel
+    </h2>
+    <p class="lead">This word is unique in combining characteristics found nowhere else.</p>
+    <div class="callout">
+      <span class="callout-title">A Single Word, Complete in Every Letter</span>
+      <p>The word is identical across all six occurrences; the variation is in its inscription.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-title">Three Distinct Orthographic States</span>
+      <p>Not two, but three: a full <em>alif</em>, a small notch, and total omission.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-title">Perfect Correspondence with the Threefold Structure</span>
+      <p>The three states correspond to the structure of the sūrah: elevation at the peak, abasement at the depth, isthmus between.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">Second</span>
+      <span class="num">2</span>
+      The Six Occurrences
+    </h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Position</th>
+            <th>Script</th>
+            <th>Pronoun Refers To</th>
+            <th>Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>al-Baqarah 2:273</td>
+            <td>Without alif</td>
+            <td>The restrained poor</td>
+            <td>Means of recognition</td>
+          </tr>
+          <tr class="highlight">
+            <td>2</td>
+            <td>al-Aʿrāf 7:46</td>
+            <td>Small notch</td>
+            <td>People of Paradise and the Fire</td>
+            <td>Tool of distinction from the isthmus</td>
+          </tr>
+          <tr class="highlight">
+            <td>3</td>
+            <td>al-Aʿrāf 7:48</td>
+            <td>Small notch</td>
+            <td>Men of the Fire</td>
+            <td>Tool of distinction from the isthmus</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Muḥammad 47:30</td>
+            <td>Without alif</td>
+            <td>The hypocrites</td>
+            <td>Means of recognition</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>al-Raḥmān 55:41</td>
+            <td>Without alif</td>
+            <td>The criminals</td>
+            <td>Means of recognition</td>
+          </tr>
+          <tr class="highlight">
+            <td>6</td>
+            <td>al-Fatḥ 48:29</td>
+            <td>With full alif</td>
+            <td>The Prophet's Companions</td>
+            <td>Established attribute in their faces</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">Third</span>
+      <span class="num">3</span>
+      The Threefold Structure of Sūrat al-Aʿrāf
+    </h2>
+    <p>The sūrah does not merely present the hereafter; it <strong>divides its people into three groups</strong>, each with its own station and state.</p>
+
+    <div class="threefold-wrap">
+      <table class="threefold-table">
+        <thead>
+          <tr>
+            <th>Group</th>
+            <th>Reference</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="group-cell group-heaven">
+                <span class="group-icon">◉</span>
+                <span class="group-name">People of Paradise</span>
+              </div>
+            </td>
+            <td>al-Aʿrāf 7:44</td>
+            <td>Height of elevation</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="group-cell group-fire">
+                <span class="group-icon">◉</span>
+                <span class="group-name">People of the Fire</span>
+              </div>
+            </td>
+            <td>al-Aʿrāf 7:50</td>
+            <td>Depth of abasement</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="group-cell group-araf">
+                <span class="group-icon">◉</span>
+                <span class="group-name">Companions of the Heights</span>
+              </div>
+            </td>
+            <td>al-Aʿrāf 7:46</td>
+            <td>Isthmus between two states</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">Fourth</span>
+      <span class="num">4</span>
+      The Three Orthographic States
+    </h2>
+
+    <div class="states-grid">
+      <div class="state-card heaven">
+        <div class="state-label">Peak</div>
+        <img src="assets/simahum-elev.svg" alt="Sīmāhum with full alif" class="rasm-img">
+        <div class="state-desc">A full <em>alif</em>, ascending above the line—fitting the peak of the station.</div>
+        <div class="state-refs">al-Fatḥ 48:29</div>
+      </div>
+      <div class="state-card araf">
+        <div class="state-label">Isthmus</div>
+        <img src="assets/simahum-mid.svg" alt="Sīmāhum with small notch" class="rasm-img">
+        <div class="state-desc">A small notch on the line—neither full nor absent.</div>
+        <div class="state-refs">al-Aʿrāf 7:46, 48</div>
+      </div>
+      <div class="state-card fire">
+        <div class="state-label">Depth</div>
+        <img src="assets/simahum-low.svg" alt="Sīmāhum without alif" class="rasm-img">
+        <div class="state-desc">A letter absent from the script—as its people have vanished or been abased.</div>
+        <div class="state-refs">al-Baqarah · Muḥammad · al-Raḥmān</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>
+      <span class="h2-sub">Fifth</span>
+      <span class="num">5</span>
+      The Place of This Witness in the Preservation of the Text
+    </h2>
+    <p>These three states have remained fixed in the original <em>rasm</em> across fourteen centuries, in East and West, and the word was never altered in a single occurrence.</p>
+
+    <div class="callout">
+      <span class="callout-title">A Corroborating Witness</span>
+      <p>This witness corroborates what is established regarding the preservation of the text through its verses, its uninterrupted transmission (<em>tawātur</em>), and the consensus of the Muslim community.</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<footer>
+  <div class="divider-orn">✦ ✦ ✦</div>
+  <p class="lang-ar active">درة التاج — فصل «سِيمَاهُمْ» من بحث رسم الألف في المصحف العثماني</p>
+  <p class="lang-en-content active">The Crown Jewel — from <em>The Inscription of the Alif in the ʿUthmānic Codex</em></p>
+  <span class="footer-ayah lang-ar active">﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾</span>
+  <span class="footer-ayah lang-en-content active">﴿And say: My Lord, increase me in knowledge﴾</span>
+  <p class="footer-ref">Ṭā-Hā: 114</p>
+  <p class="credit lang-ar active">الرسم محرّر ومستخرج كمسارات SVG مستقلة، لا يعتمد على أي خط.</p>
+  <p class="credit lang-en-content active">The rasm is edited and extracted as font-independent SVG paths.</p>
+</footer>
+
+<script>
+  function toggleLang() {
+    const body = document.body;
+    const langLabel = document.getElementById('langLabel');
+    if (body.classList.contains('lang-en')) {
+      body.classList.remove('lang-en');
+      body.setAttribute('lang', 'ar');
+      body.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.querySelectorAll('.lang-ar').forEach(el => el.classList.add('active'));
+      document.querySelectorAll('.lang-en-content').forEach(el => el.classList.remove('active'));
+      langLabel.textContent = 'English';
+      document.title = 'سِيمَاهُمْ — الكلمة الواحدة بين الرفعة والضعة';
+      localStorage.setItem('preferred-lang', 'ar');
+    } else {
+      body.classList.add('lang-en');
+      body.setAttribute('lang', 'en');
+      body.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', 'en');
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.querySelectorAll('.lang-ar').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-en-content').forEach(el => el.classList.add('active'));
+      langLabel.textContent = 'العربية';
+      document.title = 'Sīmāhum — A Single Word Between Elevation and Abasement';
+      localStorage.setItem('preferred-lang', 'en');
+    }
+  }
+  (function restoreLang() {
+    const saved = localStorage.getItem('preferred-lang');
+    if (saved === 'en') {
+      document.body.classList.add('lang-en');
+      document.body.setAttribute('lang', 'en');
+      document.body.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', 'en');
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.querySelectorAll('.lang-ar').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-en-content').forEach(el => el.classList.add('active'));
+      document.getElementById('langLabel').textContent = 'العربية';
+      document.title = 'Sīmāhum — A Single Word Between Elevation and Abasement';
+    }
+  })();
+</script>
+
+</body>
+</html>
